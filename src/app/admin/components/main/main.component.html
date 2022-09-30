@@ -1,0 +1,13 @@
+<div class="main-container">
+  <header>
+    <div class="routes">
+      <a [routerLink]="['/chapters']">Chapters list</a>
+      <a [routerLink]="['/settings']">Settings</a>
+      <a [routerLink]="['/addUser']">Add new user</a>
+      <button mat-button>Log out</button>
+    </div>
+  </header>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>
