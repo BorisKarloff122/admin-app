@@ -11,10 +11,13 @@ import { AddUserComponent } from './components/add-user/add-user.component';
 import { EditChapComponent } from './components/chapter/edit-chap/edit-chap.component';
 import {AdminRoutingModule} from "./admin-routing.module";
 import {ChapSettingsComponent} from "./components/chapter/chap-settings/chap-settings.component";
-import {MatButtonModule} from "@angular/material/button";
 import { ChaptersListComponent } from './components/chapters-list/chapters-list.component';
 import { FormsListComponent } from './components/forms/forms-list/forms-list.component';
 import { FormBuilderComponent } from './components/forms/form-builder/form-builder.component';
+import {MaterialModule} from "../shared/modules/material.module";
+import {ReactiveFormsModule} from "@angular/forms";
+import {CommonModule} from "@angular/common";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -32,9 +35,12 @@ import { FormBuilderComponent } from './components/forms/form-builder/form-build
     FormsListComponent,
     FormBuilderComponent
   ],
-  imports: [
-    AdminRoutingModule,
-  ],
+    imports: [
+        CommonModule,
+        AdminRoutingModule,
+        MaterialModule,
+        ReactiveFormsModule,
+    ],
   exports:[],
   providers:[]
 

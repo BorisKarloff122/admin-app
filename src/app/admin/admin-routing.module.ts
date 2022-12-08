@@ -8,11 +8,10 @@ import {ChaptersListComponent} from "./components/chapters-list/chapters-list.co
 
 const routes: Routes = [
   {component: LoginComponent, pathMatch:"full", path:""},
-  {component: MainComponent, pathMatch:"full", path:"/main"},
-  {component: ChaptersListComponent, pathMatch:'full', path:"/chapters"},
-  {component: SettingsComponent, pathMatch:'full', path:"/settings"},
-  {component: AddUserComponent, pathMatch: "full", path:"/addUser"},
-  {path:"*", redirectTo:""}
+  {component: MainComponent, pathMatch:"full", path:"main"},
+  {component: ChaptersListComponent, pathMatch:'full', path:"chapters"},
+  {component: SettingsComponent, pathMatch:'full', path:"settings"},
+  {component: AddUserComponent, pathMatch: "full", path:"addUser"},
 ];
 
 @NgModule({

@@ -3,5 +3,5 @@ export interface IUser{
   userName: string,
   login: string,
   password: string,
-  restrictTo: [],
+  roles: number[]
 }

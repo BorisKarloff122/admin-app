@@ -1,1 +1,35 @@
-<p>login works!</p>
+<div class="login-container">
+<header></header>
+<main>
+<div class="form-container" [formGroup] ="form">
+  <mat-form-field>
+    <input formControlName = "login" matInput type="text" placeholder="Login">
+    <mat-label>Login</mat-label>
+    <mat-error *ngIf = "!form.controls['login'].valid">
+      <div *ngIf="controlGet('login').length === 0" class="error-block empty">You must enter valid login</div>
+      <div class="error-block chars" *ngIf="controlGet('login').length < 5 && controlGet('login').length > 0">
+        Login must be at least 5 chars long. Entered {{controlGet('login').length}}
+      </div>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field >
+    <input formControlName="password"
+           matInput
+           type="{{showPassword ? 'text': 'password'}}"
+           placeholder="Password">
+    <mat-label>Password</mat-label>
+    <mat-icon class="toggle" (click)="toggleShow()">{{showPassword? 'visibility': 'visibility_off'}}</mat-icon>
+    <mat-error *ngIf="!form.controls['password'].valid">
+      <div class="error-block empty" *ngIf="controlGet('password').length === 0">You must enter valid password</div>
+      <div class="error-block chars" *ngIf="controlGet('password').length > 0 && controlGet('password').length < 5">
+        Password must be at least 5 chars long. Entered {{controlGet('password').length}}
+      </div>
+    </mat-error>
+  </mat-form-field>
+  <div class="button-block">
+    <button mat-button (click)="submitForm()">Login</button>
+  </div>
+</div>
+</main>
+<footer></footer>
+</div>
