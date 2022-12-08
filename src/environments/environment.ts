@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  useMocks: true,
   server: 'http://localhost:3000'
 };
 
