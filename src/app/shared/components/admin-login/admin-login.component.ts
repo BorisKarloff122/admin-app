@@ -2,15 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-admin-login',
+  templateUrl: './admin-login.component.html',
+  styleUrls: ['./admin-login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class AdminLoginComponent implements OnInit {
   public showPassword: boolean = false
   public form: FormGroup = this.fb.group({
     login:['', [Validators.required, Validators.minLength(5)]],
-    password: ['', [Validators.required, Validators.minLength(5)]]
+    password: ['', [Validators.required, Validators.minLength(5)]],
+    rememberMe: [false]
   })
   constructor(
     private fb: FormBuilder
@@ -24,6 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   public controlGet(name: string): string{
+    console.log(name);
     return this.form.controls[name].value
   }
 

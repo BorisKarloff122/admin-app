@@ -1,5 +1,3 @@
-<div class="login-container">
-<header></header>
 <main>
 <div class="form-container" [formGroup] ="form">
   <mat-form-field>
@@ -26,10 +24,12 @@
       </div>
     </mat-error>
   </mat-form-field>
+  <mat-form-field>
+  <mat-checkboxformControlName="rememberMe"></mat-checkbox>
+  </mat-form-field>
   <div class="button-block">
     <button mat-button (click)="submitForm()">Login</button>
   </div>
 </div>
 </main>
-<footer></footer>
-</div>
+

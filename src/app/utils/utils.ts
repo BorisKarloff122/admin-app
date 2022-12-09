@@ -60,3 +60,8 @@ export const fillSessionStorage = (): void =>{
 
   console.log('Session storage is not required');
 }
+
+export const mockLoginFlag = (): boolean => {
+  let loginFlag: string | null = sessionStorage.getItem('canLoadAdmin');
+  return loginFlag !== null;
+}

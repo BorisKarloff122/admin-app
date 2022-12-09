@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {AdminLoginComponent} from "../shared/components/admin-login/admin-login.component";
 
 const routes: Routes = [
+  {
+    path:"",
+    component: AdminLoginComponent,
+  },
   {
     path: "chapters",
     pathMatch:'full',
