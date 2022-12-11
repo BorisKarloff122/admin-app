@@ -2,7 +2,7 @@ export const mocks: any = [
   // users
   [
     {
-      table: 'users',
+      table: 'users', // TODO mock value - remove when transfered to backend
       login: "buttman",
       password: "12345",
       roles: [],

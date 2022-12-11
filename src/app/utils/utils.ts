@@ -1,10 +1,30 @@
-import {IUser} from "../admin/models/user";
+import {IUser, UserLogin} from "../shared/models/user";
 import {mocks} from "./mocks";
 import {environment} from "../../environments/environment";
+import {Observable, of} from "rxjs";
+import {IHttpResponse} from "../shared/models/httpResponse.model";
 
 const env = environment
-export const checkUser = (userInfo: IUser, selectedUser: IUser): boolean =>{
-  return userInfo.userName === selectedUser.userName && userInfo.password === selectedUser.password;
+
+export class HttpResponseObj implements IHttpResponse {
+  constructor(statusCode: number, error: string, errorMessage: string, data?: any){
+    this.status = statusCode;
+    this.error = error;
+    this.errorMessage = errorMessage
+    this.data = data ? data : '';
+  }
+
+  data: any;
+  error: string;
+  errorMessage: string;
+  status: number;
+}
+
+export const checkUser = (userInfo: UserLogin, selectedUser: IUser): boolean =>{
+  if(userInfo.login === selectedUser.login) {
+    return userInfo.password === selectedUser.password;
+  }
+  return false;
 }
 
 export const dataSetter = (data:any[], tableName: string): void => {
@@ -57,11 +77,33 @@ export const fillSessionStorage = (): void =>{
     console.log('Session Storage filled');
     return
   }
-
   console.log('Session storage is not required');
 }
 
 export const mockLoginFlag = (): boolean => {
   let loginFlag: string | null = sessionStorage.getItem('canLoadAdmin');
   return loginFlag !== null;
+}
+
+export const checkCreds = (creds: UserLogin): Observable<IHttpResponse> =>{
+  let usersList: IUser[] = dataGetter('users');
+  let searchedUser: IUser | undefined = usersList.find((entry) => entry.login === creds.login);
+  if(!searchedUser || !checkUser(creds, searchedUser)){
+
+    return of(
+      new HttpResponseObj(400, 'No user found', 'Wrong login or password! Check if everything is right and try again')
+    )
+  }
+
+  sessionStorage.setItem('canLoadAdmin', JSON.stringify(true));
+  sessionStorage.setItem('activeUser', JSON.stringify(searchedUser));
+  return of(
+    new HttpResponseObj(200, '', '')
+  )
+}
+
+export const logOut = ()=>{
+  sessionStorage.removeItem('canLoadAdmin');
+  sessionStorage.removeItem('activeUser');
+
 }

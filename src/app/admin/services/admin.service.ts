@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {Observable, of} from "rxjs";
-import {IUser} from "../models/user";
+import {IUser} from "../../shared/models/user";
 import {IGallery} from "../models/gallery";
 import {dataGetter, dataGetterSingleEntity} from "../../utils/utils";
 

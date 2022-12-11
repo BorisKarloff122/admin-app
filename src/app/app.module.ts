@@ -7,6 +7,7 @@ import {MaterialModule} from "./shared/modules/material.module";
 import {CanLoadAdminGuard} from "./shared/guards/can-load-admin.guard";
 import {CanActivateAdminGuard} from "./shared/guards/canactivate-admin.guard";
 import {AdminLoginComponent} from "./shared/components/admin-login/admin-login.component";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import {AdminLoginComponent} from "./shared/components/admin-login/admin-login.c
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    HttpClientModule,
   ],
   providers: [
     CanLoadAdminGuard,

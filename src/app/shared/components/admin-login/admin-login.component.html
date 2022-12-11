@@ -1,5 +1,11 @@
 <main>
-<div class="form-container" [formGroup] ="form">
+  <div class="img-container"></div>
+  <div class="form-container" [formGroup] ="form">
+    <h1>Admin</h1>
+    <div class="sub-header">Log in</div>
+    <div class="err-block">
+      {{errorMessage}}
+    </div>
   <mat-form-field>
     <input formControlName = "login" matInput type="text" placeholder="Login">
     <mat-label>Login</mat-label>
@@ -16,7 +22,8 @@
            type="{{showPassword ? 'text': 'password'}}"
            placeholder="Password">
     <mat-label>Password</mat-label>
-    <mat-icon class="toggle" (click)="toggleShow()">{{showPassword? 'visibility': 'visibility_off'}}</mat-icon>
+    <mat-icon class="toggle-icon"
+              (click)="toggleShow()">{{showPassword? 'visibility': 'visibility_off'}}</mat-icon>
     <mat-error *ngIf="!form.controls['password'].valid">
       <div class="error-block empty" *ngIf="controlGet('password').length === 0">You must enter valid password</div>
       <div class="error-block chars" *ngIf="controlGet('password').length > 0 && controlGet('password').length < 5">
@@ -24,9 +31,11 @@
       </div>
     </mat-error>
   </mat-form-field>
-  <mat-form-field>
-  <mat-checkboxformControlName="rememberMe"></mat-checkbox>
-  </mat-form-field>
+  <div class="form-block__checkbox">
+    <mat-checkbox formControlName="rememberMe">
+      Remember me?
+    </mat-checkbox>
+  </div>
   <div class="button-block">
     <button mat-button (click)="submitForm()">Login</button>
   </div>

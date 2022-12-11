@@ -4,7 +4,7 @@
       <a [routerLink]="['/chapters']">Chapters list</a>
       <a [routerLink]="['/settings']">Settings</a>
       <a [routerLink]="['/addUser']">Add new user</a>
-      <button mat-button>Log out</button>
+      <button (click)="logOut()">Log out</button>
     </div>
   </header>
   <main>

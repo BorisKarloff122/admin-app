@@ -4,4 +4,7 @@ export interface IUser{
   login: string,
   password: string,
   roles: number[]
+  rememberMe: boolean
 }
+
+export type UserLogin = Omit <IUser, "roles" | "rememberMe">
