@@ -23,6 +23,7 @@ export class CanActivateAdminGuard implements CanActivate {
     let flag = mockLoginFlag();
     if(!flag){
       this.router.navigate(['control']);
+      console.log('Navigation blocked');
       return false
     }
     return true;

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {LoginService} from "../../services/login.service";
+import {LoginService} from "../../../shared/services/login.service";
 import {switchMap, tap} from "rxjs";
-import {IHttpResponse} from "../../models/httpResponse.model";
-import {Router} from "@angular/router";
+import {IHttpResponse} from "../../../shared/models/httpResponse.model";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-admin-login',
@@ -21,7 +21,8 @@ export class AdminLoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private dataService: LoginService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -40,7 +41,7 @@ export class AdminLoginComponent implements OnInit {
       this.dataService.login(this.form.value).subscribe((res: IHttpResponse)=>{
         this.errorMessage = res.errorMessage;
         if(res.status === 200){
-          this.router.navigate(['/admin']);
+          this.router.navigate(['admin', {outlets: {admin: ['home']}}]);
         }
         setTimeout(()=>{
           this.errorMessage = '';

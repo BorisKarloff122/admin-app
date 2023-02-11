@@ -5,6 +5,7 @@ import {Observable, of} from "rxjs";
 import {IHttpResponse} from "../shared/models/httpResponse.model";
 
 const env = environment
+const tablesList = ['users', 'chapters']
 
 export class HttpResponseObj implements IHttpResponse {
   constructor(statusCode: number, error: string, errorMessage: string, data?: any){
@@ -75,6 +76,7 @@ export const fillSessionStorage = (): void =>{
     })
 
     console.log('Session Storage filled');
+    sessionStorage.setItem('canLoadAdmin', JSON.stringify(true));
     return
   }
   console.log('Session storage is not required');
@@ -89,7 +91,6 @@ export const checkCreds = (creds: UserLogin): Observable<IHttpResponse> =>{
   let usersList: IUser[] = dataGetter('users');
   let searchedUser: IUser | undefined = usersList.find((entry) => entry.login === creds.login);
   if(!searchedUser || !checkUser(creds, searchedUser)){
-
     return of(
       new HttpResponseObj(400, 'No user found', 'Wrong login or password! Check if everything is right and try again')
     )
@@ -102,8 +103,15 @@ export const checkCreds = (creds: UserLogin): Observable<IHttpResponse> =>{
   )
 }
 
+export const getAllTables = (): any[] => {
+  let result: any[] = [];
+  tablesList.forEach((i, index)=>{
+      result.push(JSON.parse(sessionStorage.getItem(i)!));
+  })
+  console.log(result);
+  return result;
+}
 export const logOut = ()=>{
   sessionStorage.removeItem('canLoadAdmin');
   sessionStorage.removeItem('activeUser');
-
 }

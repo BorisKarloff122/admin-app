@@ -5,8 +5,8 @@ import {ChapterComponent} from "./components/chapter/chapter.component";
 
 
 const routes: Routes = [
-  {component: ChaptersListComponent, pathMatch:"full", path:""},
-  {component: ChapterComponent, pathMatch:"full", path:"details:id"},
+  {path:"", component: ChaptersListComponent, pathMatch:"full"},
+  {path:"details:id" , component: ChapterComponent, pathMatch:"full"},
 ];
 
 @NgModule({

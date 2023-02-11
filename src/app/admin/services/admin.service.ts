@@ -4,7 +4,7 @@ import {environment} from "../../../environments/environment";
 import {Observable, of} from "rxjs";
 import {IUser} from "../../shared/models/user";
 import {IGallery} from "../models/gallery";
-import {dataGetter, dataGetterSingleEntity} from "../../utils/utils";
+import {dataGetter, dataGetterSingleEntity, getAllTables} from "../../utils/utils";
 
 @Injectable({
   providedIn: 'root'

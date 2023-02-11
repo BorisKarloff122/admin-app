@@ -1,13 +1,12 @@
 <div class="main-container">
-  <header>
-    <div class="routes">
-      <a [routerLink]="['/chapters']">Chapters list</a>
-      <a [routerLink]="['/settings']">Settings</a>
-      <a [routerLink]="['/addUser']">Add new user</a>
-      <button (click)="logOut()">Log out</button>
-    </div>
-  </header>
+  <app-admin-header
+  (menuTrigger)="drawer.toggle()"></app-admin-header>
   <main>
-    <router-outlet></router-outlet>
+    <mat-sidenav-container>
+      <mat-sidenav mode="side" #drawer>
+        <app-admin-menu></app-admin-menu>
+      </mat-sidenav>
+      <router-outlet name="admin"></router-outlet>
+    </mat-sidenav-container>
   </main>
 </div>

@@ -8,18 +8,10 @@ import {Router} from "@angular/router";
   styleUrls: ['./main.component.css']
 })
 export class AdminMainComponent implements OnInit {
-
-  constructor(
-    private loginService: LoginService,
-    private router: Router
-  ) { }
+  public dataSource = [];
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  public logOut(): void{
-    this.loginService.logOut().subscribe((res)=>{
-      this.router.navigate(['control'])
-    })
-  }
 }
