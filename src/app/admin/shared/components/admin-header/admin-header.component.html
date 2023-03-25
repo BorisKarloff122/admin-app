@@ -1,0 +1,16 @@
+<mat-toolbar color = 'primary'>
+  <div class="container">
+    <div class="logo-block">
+      Admin
+    </div>
+    <button [class]="isOpened ? 'opened' : ''"
+            (click)="toggleMenu()"
+            class="burger">
+      <span class="line"></span>
+      <span class="line"></span>
+      <span class="line"></span>
+    </button>
+  </div>
+</mat-toolbar>
+
+

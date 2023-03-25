@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HomeDataService} from "../../services/home-data.service";
+import {ITableOptions} from "../../../../models/tableOptions";
 
 
 @Component({
@@ -8,14 +9,17 @@ import {HomeDataService} from "../../services/home-data.service";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  public displayedColumns = [];
-  public tableData = [];
+  public options: ITableOptions = {
+    paginate: false
+  }
   constructor(
-    private homeService: HomeDataService
+
   ) { }
 
   ngOnInit(): void {
-
   }
+
+
+
 
 }

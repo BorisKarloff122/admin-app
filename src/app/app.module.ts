@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {CanLoadAdminGuard} from "./shared/guards/can-load-admin.guard";
 import {CanActivateAdminGuard} from "./shared/guards/canactivate-admin.guard";
 import {HttpClientModule} from "@angular/common/http";
+import { ListComponent } from './shared/components/list/list.component';
 
 
 

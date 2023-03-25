@@ -13,11 +13,6 @@ export class HomeDataService {
     private http: HttpClient
   ) { }
 
-  public getAllTables(): Observable<any>{
-    if(this.env.useMocks){
-      return of(getAllTables());
-    }
-    return this.http.get<any>(`${this.env.server}/tables`)
-  }
+
 
 }

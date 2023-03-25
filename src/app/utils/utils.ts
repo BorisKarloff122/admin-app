@@ -111,6 +111,8 @@ export const getAllTables = (): any[] => {
   console.log(result);
   return result;
 }
+
+
 export const logOut = ()=>{
   sessionStorage.removeItem('canLoadAdmin');
   sessionStorage.removeItem('activeUser');

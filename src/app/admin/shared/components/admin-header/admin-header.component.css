@@ -1,0 +1,53 @@
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width:100%;
+}
+
+.burger{
+  height: 20px;
+  width: 30px;
+  background-color: transparent;
+  border:0;
+  position: relative;
+  cursor: pointer;
+}
+
+.burger .line{
+  position: absolute;
+  background-color:#fff;
+  height: 2.5px;
+  display: block;
+  border-radius: 8px;
+  left:0;
+  opacity: 1;
+  width:100%;
+  transition-duration: 0.4s;
+  -webkit-transition: 0.4s;
+}
+.burger .line:nth-child(1){
+  top:0;
+}
+.burger .line:nth-child(2){
+  top:9px;
+}
+.burger .line:nth-child(3){
+  bottom:0;
+}
+
+.opened .line{
+  transition-duration: 0.4s;
+  -webkit-transition: 0.4s;
+}
+
+.opened .line:nth-child(1){
+  top: 8.5px;
+  transform: rotate(45deg);
+}
+.opened .line:nth-child(2){
+  transform: rotate(-45deg);
+}
+.opened .line:nth-child(3){
+  opacity: 0;
+}
